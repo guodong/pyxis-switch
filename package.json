@@ -1,0 +1,14 @@
+{
+  "name": "pyxis-switch",
+  "version": "1.0.0",
+  "description": "pyxis-switch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "guodong",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^1.1.1"
+  }
+}
