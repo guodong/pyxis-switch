@@ -27,14 +27,17 @@ function createWebsocketServer() {
     /* get info from query string */
     ws.upgradeReq.url
     var info = url.parse(ws.upgradeReq.url, true);
-    var name = info.query.token;
-    console.log('frontend name: ', name);
-    registerClientPoint(name, ws);
+    var token = info.query.token;
+    if (info.query.type == 'server') {
+      registerServerPoint(token, ws);
+    } else {
+      registerClientPoint(token, ws);
+    }
   });
 }
 
 function createUDPServer() {
-  var udpPort = 9001;
+  var udpPort = 9000;
   udpServer = dgram.createSocket('udp4');
   udpServer.bind(udpPort);
 
