@@ -128,7 +128,11 @@ function startPair(pair) {
   if (pair.frontend && pair.backend) {
     pair.frontend.removeAllListeners('message');
     pair.backend.removeAllListeners('message');
-    pair.frontend.on('message', pair.backend.send.bind(pair.backend));
+    pair.frontend.on('message', (msg) => {
+      if (pair.backend.readyState == 1) {
+        pair.backend.send(msg);
+      }
+    });
     pair.backend.on('message', (msg) => {
         if (pair.frontend.readyState == 1) {
           pair.frontend.send(msg);
